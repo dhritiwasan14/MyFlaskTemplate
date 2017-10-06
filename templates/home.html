@@ -3,11 +3,24 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Home</title>
-	<link href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css" rel ="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
 	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/7.0.0/normalize.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="{{url_for('static', filename='styles/styles.css')}}">
 </head>
 <body>
 	{% include 'includes/navbar.html' %}
-	{% block body %}{% endblock %}
+	{% block body %}
+	<div class="search">
+	<img class = "main" src="{{url_for('static', filename='google-xxl.png')}}" alt="">
+	<form action="post">
+		<dl>
+			{{ form.search(class_='searchField', 
+			autocomplete="off") }}
+		</dl>
+	</form>
+</div>
+	{% endblock %}
+	
 </body>
 </html>
