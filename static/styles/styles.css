@@ -1,5 +1,5 @@
 body {
-	background-color: #52b2cf;
+	background-color: #52b2cf !important;
 	height: 100vh;
 }
 nav {
@@ -35,13 +35,13 @@ nav {
 	margin: auto;
 	text-align: center;
 }
-input[type='text'] {
+input[type="text"] {
 	width: 100vw;
 	background-color: #52b2cf;
 	border-width: 0px;
 	color: #fff;
 	position: absolute;
-	font-size: 45px;
+	font-size: 35px;
 	top: 0;
 	bottom: 0;
 	left: 0;
@@ -50,4 +50,39 @@ input[type='text'] {
 	line-height: normal;
 	margin: auto;
 	text-align: center;
+}
+
+.login {
+	width: 100%;
+	height: 60vh;
+	margin-top: 30vh;
+}
+
+.login > .container {
+	margin: auto;
+	width: 30vw;``
+}
+
+.padding-height {
+	height: 5vw;
+}
+
+.login > .container > .field > .control > input {
+	background-color: #52b2cf;
+	border-width: 0;
+	color: #fff;
+	font-size: 16px;
+	line-height: normal;
+	padding: 0;
+	text-align: center;
+	height: 3em;
+} 
+
+.login > .container > .submit > button { 
+	width:100%;
+	margin-top: -3vw;
+}
+
+#username {
+	width: 30vw;
 }

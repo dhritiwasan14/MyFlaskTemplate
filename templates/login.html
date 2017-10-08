@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css">
+	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/7.0.0/normalize.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="{{url_for('static', filename='styles/styles.css')}}">
+</head>
+<body>
+	{% include 'includes/navbar.html' %}
+	{% block body %}
+	<form action = "http://localhost:5000/login" method = "post" class = "form login">
+		<div class="container">
+         <div class="field">
+		  <!-- <label class="label is-login">Name:</label> -->
+		  <div class="control">
+		  	{{form.username(class_='input')}}
+		    <!-- <input class="input" type="text" placeholder="Username"> -->
+		  </div>
+		</div>
+		<p class='padding-height'></p>
+		<div class="field">
+		  <!-- <label class="label is-login">Email:</label> -->
+		  <div class="control">
+		    <!-- <input class="input" type="password" placeholder="Password"> -->
+		    {{form.password(class_="input")}}
+		  </div>
+		</div>
+		<p class='padding-height'></p>
+		<div class="submit">
+		  <button class="button is-white is-outlined">Submit</button>
+		</div>
+		</div>
+      </form>
+      {% endblock %}
+</body>
+</html>
