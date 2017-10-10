@@ -77,12 +77,18 @@ input[type="text"] {
 	text-align: center;
 	height: 3em;
 } 
-
-.login > .container > .submit > button { 
+a {
 	width:100%;
 	margin-top: -3vw;
 }
-
-#username {
-	width: 30vw;
+.submit > button {
+	width:100%;
+	margin-top: -3vw;
+}
+.login > .container > a > .submit { 
+	width:100%;
+	margin-top: -3vw;
+}
+.button is-white is-outlined {
+	width: 100%;
 }

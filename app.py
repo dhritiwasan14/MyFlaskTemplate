@@ -56,7 +56,15 @@ class LoginForm(Form):
 	username = StringField(" ", [validators.Length(min=5, max=10)], render_kw={'placeholder':'Username'})
 	password = PasswordField(" ", [validators.Length(min=5, max=10)], render_kw={'placeholder':'Password'})
 	email = EmailField(" ", [validators.DataRequired(), validators.Email()], render_kw={'placeholder':'email'})
-
+class RegisterForm(Form):
+	name = StringField("Name", [validators.Length(min=2, max=20)], render_kw={'placeholder'':Name'})
+	email = EmailField("Email", [validators.Length(min=6, max=20)], render_kw={'placeholder':'Email'})
+	username = StringField(" ", [validators.Length(min=5, max=10)], render_kw={'placeholder':'Username'})
+	password = PasswordField("Password", [validators.Length(min=5)], render_kw={'placeholder':'Password'})
+	confirmPw = PasswordField("Confirm Password", [
+		validators.DataRequired(),
+		validators.EqualTo('confirm', message='Passwords do not match')
+		])
 @app.route('/', methods=['GET'])
 def home():
 	form = SearchForm(request.form)
@@ -69,13 +77,23 @@ def login():
 		return render_template('login.html', form=form)
 	else:
 		username = request.form['username']
-	    password = request.form['password']
-	    registered_user = User.query.filter_by(username=username,password=password).first()
-	    if registered_user is None:
-	        return redirect(url_for('login'))
-	    login_user(registered_user)
-	    return redirect(request.args.get('next') or url_for('index'))
-
-
+		password = request.form['password']
+		registered_user = User.query.filter_by(username=username,password=password).first()
+		if registered_user is None:
+		    return redirect(url_for('login'))
+		login_user(registered_user)
+		return redirect(request.args.get('next') or url_for('index'))
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+	if request.method == 'GET':
+		form = RegisterForm(request.form)
+		return render_template('register.html', form = form)
+	else:
+		name = request.form['name']
+		username = request.form['username']
+		password = request.form['password']
+		email = request.form['email']
+		confirmPw = request.form['confirmPw']
+		return render_template('home.html')
 if __name__ == "__main__":
 	app.run(debug=True)
